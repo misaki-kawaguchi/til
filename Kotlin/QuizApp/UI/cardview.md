@@ -1,0 +1,145 @@
+# カードベースのレイアウト（cardview）について
+
+## build.gradle
+下記を追加。マテリアルデザインを使えるようにする
+```
+implementation 'com.google.android.material:material:1.0.0'
+```
+
+## activity_main.xml
+下記のように記述するとカードビューを作ることができる
+
+`card_view:cardCornerRadius`でレイアウトの丸みを設定する  
+`card_view:cardElevation`でカードのカスタムの高度を指定できる。高度を上げると影が濃くなり、下げると薄くなる
+
+```
+<com.google.android.material.card.MaterialCardView
+...
+
+...
+</com.google.android.material.textfield.TextInputLayout>
+```
+
+
+### テキスト入力を実装
+・親要素：TextInputLayout
+・子要素：TextInputEditText
+
+`android:hint="Name"`で入力のヒントを表示  
+`android:textColorHint`でヒントのテキストカラーを設定
+
+```
+<com.google.android.material.textfield.TextInputLayout
+
+ <androidx.appcompat.widget.AppCompatEditText/>
+ ...
+
+ ...
+
+</com.google.android.material.textfield.TextInputLayout>
+```
+
+トップページのUI
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/ic_bg"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- タイトル -->
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"/>
+
+    <!-- カードベースのレイアウトを作成する-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- タイトル -->
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Welcome"
+                android:textColor="#363a43"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="Please enter your name."
+                android:textColor="#7a8089"
+                android:textSize="16sp"/>
+
+            <!-- テキスト入力エリア-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <!-- テキスト入力フォーム -->
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:textColor="#363a43"
+                    android:textColorHint="#7a8089"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- スタートボタン-->
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/purple_200"
+                android:text="Start"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:backgroundTint="#9013fe"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
+```
+
+[参照：Materia Components](https://github.com/material-components/material-components-android/blob/master/docs/components/Card.md)
