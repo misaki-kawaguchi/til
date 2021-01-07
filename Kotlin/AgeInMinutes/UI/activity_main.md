@@ -116,4 +116,5 @@
 ## android:orientation
 並べる方向を決める
 |  horizontal  |  横方向  |
+| ---- | ---- |
 |  vertical |  縦方向  |
