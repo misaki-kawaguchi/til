@@ -7,3 +7,4 @@
 |  bin/rails db:rollback  |  バージョンを1つ戻す |
 |  bin/rails db:rollback STEP=2  |  バージョンを指定したステップ数だけ戻す  |
 |  bin/rails db:migrare:redo  |  バージョンを1つ戻してから1つ上げる  |
+|  bin/rails db:migrate:status  |  migrationの状態を確認する  |
