@@ -1,0 +1,77 @@
+# v-bind
+
+## HTML
+```
+<div id="app">
+  <a v-bind:href="url">Google</a>
+  <a :href="url">Google</a>
+</div>
+```
+v-bind:属性の値をデータに紐付ける。省略可能。
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    url: 'http://google.com/'
+  }
+})
+```
+
+## ※応用
+## ①
+## HTML
+```
+<a :[attribute]="url">Google</a>
+```
+
+### JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    url: 'http://google.com/',
+    attribute: 'href'
+  }
+})
+```
+## ②
+## HTML
+```
+<div id="app">
+  <a v-bind="{href: urlTwitter, id: number}">Twitter</a>
+</div>
+```
+
+オブジェクト形式で書くことができる
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    urlTwitter: 'https://twitter.com/',
+    number: 31,
+  }
+})
+```
+
+## ③
+## HTML
+```
+<a v-bind="twitterObject">Twitter</a>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    twitterObject: {
+      href: 'https://twitter.com/',
+      id: 31
+    }
+  }
+})
+```
