@@ -1,0 +1,21 @@
+# v-modelを使用して双方向バインディングを作成する
+
+## HTML
+```
+<div id="app">
+  <input type="text" v-model="message">
+  <h1>{{ message }}</h1>
+</div>
+```
+
+inputにテキストを入力すると`<h1>{{ message }}</h1>`にも反映される
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    message: 'こんにちは'
+  }
+})
+```
