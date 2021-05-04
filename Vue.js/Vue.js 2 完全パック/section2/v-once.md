@@ -1,1 +1,27 @@
+# v-once
 
+## HTML
+```
+<div id="app">
+  <p v-once>{{ message }}</p>
+  <p>{{ sayHi() }}</p>
+</div>
+```
+
+v-once:最初に描画したものだけを永遠に表示する。その後に代入して値を変えることはできない。
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello World!'
+  },
+  methods: {
+    sayHi() {
+      this.message = 'Hello Vue.js'
+      return 'Hi'
+    }
+  }
+})
+```
