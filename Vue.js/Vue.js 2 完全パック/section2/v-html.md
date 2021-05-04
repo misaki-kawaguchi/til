@@ -1,0 +1,21 @@
+# v-html
+
+## HTML
+```
+<div id="app">
+  <p>{{ html }}</p>
+  <div v-html="html"></div>
+</div>
+```
+
+v-htmlを使うと、h1タグとして出力してくれる
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    html: '<h1>h1です</h1>'
+  }
+})
+```
