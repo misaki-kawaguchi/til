@@ -1,0 +1,90 @@
+# v-on
+
+## HTML(v-on:click)
+```
+<div id="app">
+  <p>現在{{ number }}回クリックされています</p>
+  <button v-on:click="countUp">カウントアップ</button>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    number: 0
+  },
+  methods: {
+    countUp: function() {
+      this.number += 1
+    }
+  }
+})
+```
+
+## 応用
+## ①イベントオブジェクトを使って情報を取得する
+## HTML
+```
+<div id="app">
+  <p>現在{{ number }}回クリックされています</p>
+  <button v-on:click="countUp">カウントアップ</button>
+  <p v-on:mousemove="changeMousePosition">マウスを乗せてください</p>
+  <p>x:{{ x }}、Y:{{ y }}</p>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    number: 0,
+    x: 0,
+    y: 0
+  },
+  methods: {
+    countUp: function() {
+      this.number += 1
+    },
+    changeMousePosition: function(event) {
+      this.x = event.clientX;
+      this.y = event.clientY;
+    }
+  }
+})
+```
+
+## 応用
+## ②v-onに指定しているメソッドに引数を持たせる
+## HTML($eventを使う)
+```
+<div id="app">
+  <p>現在{{ number }}回クリックされています</p>
+  <button v-on:click="countUp(2)">カウントアップ</button>
+  <p v-on:mousemove="changeMousePosition(3, $event)">マウスを乗せてください</p>
+  <p>x:{{ x }}、Y:{{ y }}</p>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    number: 0,
+    x: 0,
+    y: 0
+  },
+  methods: {
+    countUp: function(times) {
+      this.number += 1 * times
+    },
+    changeMousePosition: function(divideNumber,event) {
+      this.x = event.clientX / divideNumber;
+      this.y = event.clientY / divideNumber;
+    }
+  }
+})
+```
