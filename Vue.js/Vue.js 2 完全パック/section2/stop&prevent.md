@@ -1,0 +1,81 @@
+# stopとprevent
+
+## stop
+子要素のイベントが親のイベントを呼び出さない、ということを設定する
+
+
+stopPropagationを呼び出す
+
+## HTML
+```
+<div id="app">
+  <p>現在{{ number }}回クリックされています</p>
+  <button v-on:click="countUp(2)">カウントアップ</button>
+  <p v-on:mousemove="changeMousePosition(3, $event)">マウスを乗せてください
+  <span v-on:mousemove="noEvent">反応しないでください</span></p>
+  <p>x:{{ x }}、Y:{{ y }}</p>
+</div>
+```
+
+`<span v-on:mousemove.stop>反応しないでください</span></p>`とすることもできる
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+    data: {
+    number: 0,
+    x: 0,
+    y: 0
+  },
+  methods: {
+    countUp: function(times) {
+    this.number += 1 * times
+  },
+  changeMousePosition: function(divideNumber,event) {
+    this.x = event.clientX / divideNumber;
+    this.y = event.clientY / divideNumber;
+  },
+  noEvent: function(event) {
+    event.stopPropagation();
+  }
+})
+```
+
+## prevent
+イベントが明示的に処理されない場合に user agent に、そのデフォルトアクションを通常どおりに行うべきではないと伝える
+
+## HTML
+```
+<div id="app">
+  <p>現在{{ number }}回クリックされています</p>
+  <button v-on:click="countUp(2)">カウントアップ</button>
+  
+  <a v-on:click="noEvent" href="https://www.google.com/">Google</a>
+  <p>x:{{ x }}、Y:{{ y }}</p>
+</div>
+```
+`<a v-on:click.prevent="noEvent" href="https://www.google.com/">Google</a>`とすることもできる
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    number: 0,
+    x: 0,
+    y: 0
+  },
+  methods: {
+    countUp: function(times) {
+    this.number += 1 * times
+  },
+  changeMousePosition: function(divideNumber,event) {
+    this.x = event.clientX / divideNumber;
+    this.y = event.clientY / divideNumber;
+  },
+  noEvent: function(event) {
+    event.preventDefault();
+  }
+})
+```
