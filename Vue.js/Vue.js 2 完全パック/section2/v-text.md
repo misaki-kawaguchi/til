@@ -1,0 +1,21 @@
+# v-text
+
+## HTML
+```
+<div id="app">
+  <p>{{ message }}</p>
+  <p v-text="message"></p>
+</div>
+```
+`<p>{{ message }}</p>`と`<p v-text="message"></p>`は同じ意味
+
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello World!'
+  }
+})
+```
