@@ -107,7 +107,31 @@ new Vue({
     event: 'click'
   },
   methods: {
-    countUp: function(times) {
+    countUp: function() {
+      this.number += 1
+    }
+  }
+})
+```
+
+## 省略記法②
+## HTML
+```
+<div id="app">
+  <p>現在{{ number }}回クリックされています</p>
+  <button @click="countUp">カウントアップ</button>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+    data: {
+    number: 0
+  },
+  methods: {
+    countUp: function() {
       this.number += 1
     }
   }
