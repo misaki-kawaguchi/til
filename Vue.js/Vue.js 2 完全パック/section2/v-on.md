@@ -88,3 +88,28 @@ new Vue({
   }
 })
 ```
+
+## 省略記法
+## HTML
+```
+<div id="app">
+  <p>現在{{ number }}回クリックされています</p>
+  <button v-on:[event]="countUp">カウントアップ</button>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    number: 0,
+    event: 'click'
+  },
+  methods: {
+    countUp: function(times) {
+      this.number += 1
+    }
+  }
+})
+```
