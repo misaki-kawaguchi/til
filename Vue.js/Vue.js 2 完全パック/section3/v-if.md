@@ -1,0 +1,66 @@
+# v-if
+
+## HTML
+```
+<div id="app">
+  <p v-if="ok">OK!</p>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    ok: true
+  }
+})
+```
+
+trueの場合OK!が表示される
+
+## v-elseを使った場合
+
+## HTML
+```
+<div id="app">
+  <p v-if="ok">OK!</p>
+  <p v-else>Not OK...</p>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    ok: true
+  }
+})
+```
+
+trueの場合はOK!と表示され、elseの場合はNot OK..と表示される
+
+## v-else-ifを使った場合
+
+## HTML
+```
+<div id="app">
+  <p v-if="ok">OK!</p>
+  <p v-else-if>maybe OK!</p>
+  <p v-else>Not OK...</p>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    ok: false,
+    maybeOk: true
+  }
+})
+```
+
+v-ifとv-else-ifがfalseの場合はNot OK...が表示される
