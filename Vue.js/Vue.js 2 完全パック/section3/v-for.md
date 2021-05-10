@@ -116,3 +116,35 @@ new Vue({
 1から10までの数字が並ぶ
 
 ※inで書かれている箇所はofで書くこともできる
+
+## key属性をつける
+
+## HTML
+```
+<div id="app">
+  <ul>
+    <div v-for="fruit in fruits" :key="fruit">
+      <p>{{ fruit }}</p>
+      <input type="text">
+    </div>
+  </ul>
+  <button @click="remove">先頭を削除</button>
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app',
+  data: {
+    fruits: ['りんご', 'バナナ', 'ぶどう']
+  },
+  methods: {
+    remove: function() {
+      this.fruits.shift()
+    }
+  }
+})
+```
+
+key属性をつけないと、inputの内容がズレてしまう
