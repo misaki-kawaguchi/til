@@ -1,0 +1,28 @@
+# templateプロパティを使って、文字列のみでテンプレートを書く
+
+## HTML
+```
+<div id="app2">
+</div>
+```
+
+## JavaScript
+```
+new Vue({
+  el: '#app2',
+  data: {
+    name: '美咲'
+  },
+  template: '<h1>こんにちは、{{name}}</h1>'
+})
+```
+
+$mountを使う場合は、
+```
+new Vue({
+  data: {
+    name: '美咲'
+  },
+  template: '<h1>こんにちは、{{name}}</h1>'
+}).$mount('#app2')
+```
