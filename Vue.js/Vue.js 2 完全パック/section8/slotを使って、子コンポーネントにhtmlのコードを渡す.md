@@ -1,0 +1,42 @@
+# slotを使って、子コンポーネントにhtmlのコードを渡す
+
+## App.vue(親)
+
+```
+<template>
+  <div>
+    <LikeHeader>
+      <h1>トータルのいいね数</h1>
+      <h2>{{ number }}</h2>
+    </LikeHeader>
+  </div>
+</template>
+
+<script>
+import LikeHeader from "./components/LikeHeader.vue";
+
+export default {
+  data() {
+    return {
+      number: 10
+    }
+  },
+  components: {
+    LikeHeader
+  }
+};
+</script>
+```
+
+`<LikeHeader></LikeHeader>`に内容がない場合は、`<slot></slot>`に記載されたものが表示される。
+
+## LikeNumber.vue(子)
+```
+<template>
+  <div>
+    <slot></slot>
+  </div>
+</template>
+```
+
+slotを使うと、htmlのタグごと子コンポーネントに渡すことができる
