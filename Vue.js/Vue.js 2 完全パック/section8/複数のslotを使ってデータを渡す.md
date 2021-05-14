@@ -1,0 +1,60 @@
+# 複数のslotを使ってデータを渡す
+
+## App.vue(親)
+```
+<template>
+  <div>
+    <LikeHeader>
+    
+      <template v-slot:title>
+        <h2>こんにちは</h2>
+      </template>
+      
+      <h3>はじめまして</h3>
+    
+      <template v-slot:number>
+        <p>{{ number }}</p>
+      </template>
+      
+    </LikeHeader>
+  </div>
+</template>
+
+<script>
+import LikeHeader from "./components/LikeHeader.vue";
+
+export default {
+  data() {
+    return {
+      number: 10
+    }
+  },
+  components: {
+    LikeHeader
+  }
+};
+</script>
+```
+
+## LikeHeader.vue(子)
+```
+<template>
+  <div>
+    <slot name="title"></slot>
+    <hr>
+    
+    <slot></slot>
+    
+    <p>いいねの数</p>
+    <slot name="number"></slot>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ["headerText"]
+}
+</script>
+```
+
+`<slot></slot>`のようにnameを追加していない場合は、親の`<template></template>`で囲われている以外のものが表示される。
