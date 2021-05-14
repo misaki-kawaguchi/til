@@ -1,0 +1,69 @@
+# propsを使用して、親から子にデータを渡す
+
+## App.vue(親)
+```
+<template>
+  <div>
+    <h2>{{ number }}</h2>
+    <LikeNumber :number="number"></LikeNumber>
+    <LikeNumber :number="6"></LikeNumber>
+  </div>
+</template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      number: 10
+    }
+  },
+  components: {
+    LikeHeader
+  }
+};
+</script>
+```
+
+## LikeNumber.vue(子)
+```
+<template>
+  <div>
+    <p>いいね({{ number / 2 }})</p>
+    <button @click="increment">+1</button>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    number: {
+      type: Number,
+      required: true
+    }
+  },
+  methods: {
+    increment() {
+      this.number += 1;
+    }
+  }
+};
+</script>
+```
+
+`required: true`を使用しない場合、defaultを使うことができる
+```
+props: {
+  number: {
+    type: Number,
+    default: 10
+  }
+},
+```
+
+propsは配列で複数指定することができる
+```
+props: ["totalNumber", "testProps"]
+```
+
+※propsはキャメルケースかケバブケースで書く
