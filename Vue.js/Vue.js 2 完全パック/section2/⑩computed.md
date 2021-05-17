@@ -1,4 +1,4 @@
-# 算出プロパティ（computed）
+# ⑩算出プロパティ（computed）
 
 ## HTML
 ```
