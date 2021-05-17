@@ -1,4 +1,4 @@
-# stopとprevent
+# ⑦stopとprevent
 
 ## stop
 子要素のイベントが親のイベントを呼び出さない、ということを設定する
