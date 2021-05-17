@@ -1,4 +1,4 @@
-# Vue CLIが作成したファイルの説明
+# 01.Vue CLIが作成したファイルの説明
 
 ・node_module：npm installしたときにダウンロードされるパッケージ
 
